@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}Teste de Portas{% endblock %}
+{% block content %}
+
+    <form method="post" class="container">
+        {% csrf_token %}
+        <div class="div-ip">
+            {{form.ip}}
+        </div>
+        <div class="div-port">
+            {{form.porta}}
+        </div>
+        <div class="div-btn">
+            <button type="submit" class="btn">Testar</button>
+        </div>
+
+    </form>
+
+        <div class="div-resposta">
+
+        {% if result == 0 %}
+            <p>A Porta {{porta}} está
+            <font style="color:green;">Aberta</font>
+                em {{ip}}.
+            </p>
+
+        {% elif result == 10035 %}
+            <p>A Porta {{porta}} está
+            <font style="color:red;">Fechada</font>
+                em {{ip}}.
+            </p>
+
+        {% else %}
+            <p></p>
+        {% endif %}
+        </div>
+
+        <div class="box-content">
+            <br>
+            <h4>O que é uma porta?</h4>
+            <br>
+            <br>
+            <p class="conteudo">
+                Em redes de computadores, uma porta é um software de aplicação específica ou processo específico
+                servindo de ponto final de comunicações em um sistema operacional hospedeiro de um computador.
+                Uma porta tem associação com o endereço de IP do hospedeiro, assim como o tipo de protocolo usado para
+                comunicação. O propósito das portas é para singularmente identificar aplicações e processos de um único
+                computador e assim possibilitá-los a compartilhar uma única conexão física com uma rede de comutação de
+                pacotes, como a internet.
+            </p>
+        </div>
+
+        <div class="tabela-port">
+            <table>
+                <theade>
+                    <th>Porta</th>
+                    <th>Número</th>
+                </theade>
+                <tbody>
+                <tr>
+                    <td>HTTP</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>FTP</td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td>TELNET</td>
+                    <td>23</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+{% endblock %}
